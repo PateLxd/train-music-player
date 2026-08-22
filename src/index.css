@@ -1,0 +1,464 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Yatra One", serif;
+  --font-ui: "Space Grotesk", system-ui, sans-serif;
+}
+
+:root {
+  color: #f7f0e5;
+  background: #100a08;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  background: #100a08;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+
+::selection {
+  color: #100a08;
+  background: #f2a516;
+}
+
+.site-shell {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(107, 38, 24, 0.22), transparent 37%),
+    linear-gradient(180deg, #130b08 0%, #100906 57%, #170a06 100%);
+}
+
+.grain {
+  z-index: 20;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+.topbar {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 22px clamp(20px, 4vw, 72px);
+  color: rgba(247, 240, 229, 0.62);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+
+.listener-count, .track-count {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.listener-count strong, .track-count strong { color: #f7f0e5; }
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #42dca3;
+  box-shadow: 0 0 12px rgba(66, 220, 163, 0.55);
+}
+
+.top-route {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+}
+
+.track-count { justify-self: end; }
+
+.hero-composition {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(100%, 1100px);
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 82px 28px 52px;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.identity {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.route-line {
+  margin: 0 0 5px;
+  color: rgba(247, 240, 229, 0.48);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+.identity h1 {
+  margin: 0;
+  color: #fffaf0;
+  font-family: "Yatra One", serif;
+  font-size: clamp(66px, 8vw, 122px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  text-shadow: 3px 4px 0 #8f231a, 0 18px 42px rgba(0, 0, 0, 0.48);
+}
+
+.subline {
+  display: flex;
+  margin-top: 7px;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.subline span {
+  width: 44px;
+  height: 1px;
+  background: rgba(247, 240, 229, 0.3);
+}
+
+.subline p {
+  margin: 0;
+  color: rgba(247, 240, 229, 0.62);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.train-banner {
+  position: relative;
+  width: min(100%, 820px);
+  aspect-ratio: 16 / 7.4;
+  margin: 15px 0 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.train-banner::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, transparent 56%, #100906 100%);
+  pointer-events: none;
+}
+
+.train-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 52%;
+}
+
+.bumper-copy {
+  position: relative;
+  z-index: 3;
+  margin-top: -24px;
+  text-align: center;
+}
+
+.bumper-copy p {
+  margin: 0;
+  color: #f5e6d0;
+  font-family: "Yatra One", serif;
+  font-size: clamp(18px, 2vw, 26px);
+}
+
+.bumper-copy span {
+  display: block;
+  margin-top: 1px;
+  color: rgba(247, 240, 229, 0.38);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.audio-player {
+  display: grid;
+  width: min(100%, 720px);
+  min-height: 108px;
+  margin-top: 18px;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 17px;
+  border: 1px solid rgba(247, 240, 229, 0.21);
+  border-radius: 28px;
+  background: rgba(31, 18, 13, 0.86);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+}
+
+.track-art {
+  width: 64px;
+  height: 64px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.track-details { min-width: 0; }
+
+.track-heading {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.track-heading h2 {
+  overflow: hidden;
+  margin: 0;
+  color: #fffaf0;
+  font-size: 14px;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-heading p {
+  overflow: hidden;
+  margin: 3px 0 0;
+  color: rgba(247, 240, 229, 0.5);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-heading > span {
+  flex-shrink: 0;
+  color: rgba(247, 240, 229, 0.35);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+.progress-row {
+  display: grid;
+  margin-top: 12px;
+  grid-template-columns: 30px 1fr 30px;
+  align-items: center;
+  gap: 8px;
+  color: rgba(247, 240, 229, 0.45);
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-row span:last-child { text-align: right; }
+
+.player-range {
+  width: 100%;
+  height: 4px;
+  margin: 0;
+  border-radius: 99px;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.player-range::-webkit-slider-thumb {
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 50%;
+  appearance: none;
+  background: #f2a516;
+}
+
+.player-range::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 50%;
+  background: #f2a516;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.control-button, .play-button {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+}
+
+.control-button.small {
+  width: 34px;
+  height: 34px;
+}
+
+.control-button:hover, .control-button.active {
+  color: #f2a516;
+  border-color: rgba(242, 165, 22, 0.45);
+}
+
+.play-button {
+  width: 48px;
+  height: 48px;
+  border-color: #f2a516;
+  color: #160c08;
+  background: #f2a516;
+}
+
+.play-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.player-error {
+  margin: 9px 0 0;
+  color: #eaa28e;
+  font-size: 10px;
+}
+
+footer {
+  position: absolute;
+  z-index: 3;
+  right: clamp(20px, 4vw, 72px);
+  bottom: 18px;
+  left: clamp(20px, 4vw, 72px);
+  display: flex;
+  justify-content: space-between;
+  color: rgba(247, 240, 229, 0.24);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+}
+
+@media (max-width: 700px) {
+  .topbar {
+    grid-template-columns: 1fr 1fr;
+    padding: 17px 18px;
+  }
+
+  .top-route { display: none; }
+
+  .hero-composition {
+    min-height: 100svh;
+    padding: 66px 15px 42px;
+  }
+
+  .route-line {
+    font-size: 8px;
+    letter-spacing: 0.28em;
+  }
+
+  .identity h1 { font-size: clamp(59px, 20vw, 82px); }
+
+  .subline { gap: 9px; }
+  .subline span { width: 24px; }
+
+  .subline p {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+  }
+
+  .train-banner {
+    width: calc(100% + 30px);
+    aspect-ratio: 16 / 9.3;
+    margin-top: 11px;
+  }
+
+  .bumper-copy { margin-top: -14px; }
+
+  .bumper-copy p {
+    padding: 0 14px;
+    font-size: 18px;
+  }
+
+  .bumper-copy span { display: none; }
+
+  .audio-player {
+    width: 100%;
+    min-height: 0;
+    margin-top: 15px;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 11px;
+    padding: 13px;
+    border-radius: 23px;
+  }
+
+  .track-art {
+    width: 48px;
+    height: 48px;
+  }
+
+  .track-heading h2 { font-size: 12px; }
+  .track-heading p { font-size: 9px; }
+  .progress-row { margin-top: 8px; }
+
+  .player-controls {
+    grid-column: 1 / -1;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .control-button {
+    width: 35px;
+    height: 35px;
+  }
+
+  .play-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  footer { display: none; }
+}
+
+@media (max-height: 720px) and (min-width: 701px) {
+  .hero-composition {
+    padding-top: 60px;
+    padding-bottom: 24px;
+  }
+
+  .identity h1 { font-size: 72px; }
+
+  .train-banner {
+    width: 650px;
+    margin-top: 7px;
+  }
+
+  .audio-player { margin-top: 10px; }
+}
